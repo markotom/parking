@@ -1,4 +1,4 @@
-  define(['models/entrance', 'auth', 'mailer', 'jade'], function(Entrance, auth, mailer, jade){
+  define(['models/entrance', 'auth', 'mailer'], function(Entrance, auth, mailer){
 
   var entrances = function(app){
 
