@@ -79,8 +79,7 @@
 
           req.flash('success', 
               "Se ha actualizado correctamente el estado de la solicitud de "
-            + saved.fullname.name + ' ' + saved.fullname.surname + " (" + saved.id_unam + "). "
-            + "Sólo falta confirmar por correo electrónico.");
+            + saved.fullname.name + ' ' + saved.fullname.surname + " (" + saved.id_unam + "). ");
           res.redirect('/accesos');
 
         });
