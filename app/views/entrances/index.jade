@@ -1,0 +1,47 @@
+extends ../layout
+
+block content
+  - if (items.length > 0) {
+    table.table.table-bordered.table-hover.table-striped
+      tr
+        th ID UNAM
+        th Trabajador
+        th Categoría
+        th Nombre
+        th Apellidos
+        th Estado
+        th(style='width: 70px')
+      each item in items
+        case item.status
+          when 'Aprobada'
+            - var classstatus = 'success'
+          when 'Confirmar'
+            - var classstatus = 'info'
+          when 'Rechazada'
+            - var classstatus = 'error'
+          default
+            - var classstatus = 'warning' 
+        tr(class = classstatus)
+          td= item.id_unam
+          td= item.adscription
+          td= item.category
+          td= item.fullname.name
+          td= item.fullname.surname
+          td= item.status
+          td(style='text-align:right')
+            a.confirm(href='/accesos/#{item._id}/status', title='Aprobar solicitud') 
+              i.icon-ok-circle
+            | 
+            a.confirm(href='/accesos/#{item._id}/revoke', title='Rechazar solicitud')
+              i.icon-ban-circle
+            | 
+            a(href="/accesos/#{item._id}")
+              i.icon-pencil
+            | 
+            a.confirm(href='/accesos/#{item._id}/delete', title='Eliminar solicitud')
+              i.icon-trash
+            
+  - } else {
+    p.well.well-large(style="text-align: center")
+      | No hay solicitudes para aprobar
+  - }

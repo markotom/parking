@@ -1,0 +1,18 @@
+form.form-horizontal(action='/login', method='post')
+  .control-group
+    label.control-label(for='username') Usuario:
+    .controls
+      .input-prepend
+        span.add-on
+          i.icon-user
+        input#username(type='text', name='username', placeholder='Nombre de usuario')
+  .control-group
+    label.control-label(for='password') Contraseña:
+    .controls
+      .input-prepend
+        span.add-on
+          i.icon-exclamation-sign
+        input#password(type='password', name='password', placeholder='Contraseña')
+  .control-group
+    .controls
+      button.btn.btn-primary(type='submit') Iniciar sesión

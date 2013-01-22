@@ -1,0 +1,33 @@
+extends ../layout
+
+block content
+  .row-fluid
+    p.span8.lead
+      | Para solicitar una tarjeta, debes llenar un formulario.
+      br
+      strong Fechas de solicitud: 
+      | del 23 de enero al 1 de febrero de 2013
+    p.span3.offset1
+      a.btn.btn-block.btn-large.btn-success(href="/accesos/add") Solicitar tarjeta
+  hr
+
+  .row-fluid
+    .span4
+      h3 Motivo
+      p
+        | Con el fin de mejorar el servicio del estacionamiento, se iniciarán trabajos 
+        | de mejora de los dispositivos electrónicos. Parte fundamental de ese proceso 
+        | es el cambio de la tarjeta de ingreso.
+    .span4
+      h3 Procedimiento
+      p
+        | A fin de que se realice con tiempo la asignación de nuevas tarjetas, los 
+        | profesores de carrera, de asignatura definitivos, técnicos académicos, 
+        | profesores de Posgrado o de asignatura, funcionarios y trabajadores, deberán 
+        | rellenar el formulario en línea que encontrarás en esta aplicación.
+    .span4
+      h3 Entrega
+      p
+        | Al final del proceso se te indicará por correo electrónico en qué fechas 
+        | podrás recoger su tarjeta en la pagaduría.
+  hr

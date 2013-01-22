@@ -1,0 +1,86 @@
+!!! 5
+html(lang="es", ng-app="app")
+  head
+    meta(charset='utf-8')
+    meta(name="HandheldFriendly", content="True")
+    meta(name="MobileOptimized", content="320")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Tarjetas de estacionamiento
+    link(rel='stylesheet', type='text/css', href='/css/bootstrap.min.css')
+    link(rel='stylesheet', type='text/css', href='/css/bootstrap-responsive.min.css')
+    link(rel='stylesheet', type='text/css', href='/css/style.css')
+    script(src="http://code.jquery.com/jquery.min.js")
+    script(src="/js/lib/bootstrap/bootstrap-min.js")
+    script(src='http://ajax.aspnetcdn.com/ajax/jquery.validate/1.10.0/jquery.validate.min.js')
+    script(src='/js/main.js')
+  body
+    .navbar.navbar-inverse.navbar-fixed-top
+      .navbar-inner
+        .container
+          a.btn.btn-navbar(data-toggle='collapse', data-target='.nav-collapse')
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.brand(href='http://www.filos.unam.mx') Facultad de Filosofía y Letras
+          .nav-collapse.collapse
+            ul.nav
+              li
+                a(href='/') Inicio
+              li
+                a(href='/accesos/add') Solicitar tarjeta
+            - if (user) {
+                a.btn.btn-danger(href='/accesos') Consultar solicitudes
+            - }
+
+
+            p.navbar-text.pull-right
+              - if (!user) { 
+                  a.navbar-link(href='#signin', role='button', data-toggle='modal') Consultar solicitudes
+              - } else {
+                  i.icon-user.icon-white
+                  |  #{user.username} |
+                  | 
+                  a.navbar-link(href='/logout') Salir
+              - }
+
+    #wrap.container
+
+      - error = flash('error');
+      - if(error.length > 0) {
+          .alert.alert-error
+            button.close(type='button', data-dismiss='alert') ×
+            | #{error}
+      - }
+
+      - success = flash('success');
+      - if(success.length > 0) {
+          .alert.alert-success       
+            button.close(type='button', data-dismiss='alert') ×
+            | #{success}    
+      - }
+
+      .alert.alert-info
+        button.close(type='button', data-dismiss='alert') ×
+        strong  ¿Necesitas ayuda? 
+        | Llama al 55508008 o a la extensión 21815 para asesoría técnica
+      .page-header
+        h1
+          | Solicitud de tarjetas de estacionamiento
+
+      #main(ng-view)
+        block content
+    
+    #footer
+      .container
+        p.muted.credit
+          | Desarrollado por 
+          a(href='http://twitter.com/markotom') Marco Godínez
+          | . Envía tus comentarios y sugerencias.
+
+    //- MODAL LOGIN
+    #signin.modal.hide.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+      .modal-header
+        button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+        h3#myModalLabel Iniciar sesión
+      .modal-body
+        include users/_login

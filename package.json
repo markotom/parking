@@ -1,0 +1,20 @@
+{
+    "name"      : "parking"
+  , "version"   : "0.0.1"
+  , "scripts": {
+      "start": "node app.js"
+    }
+  , "dependencies": {
+      "requirejs": ""
+    , "express": "3.x"
+    , "mongoose": ""
+    , "jade": ""
+    , "passport": ""
+    , "passport-local": ""
+    , "connect-flash": ""
+    , "nodemailer": ""
+  }
+  , "engines": {
+    "node": "0.8.x"
+  }
+}

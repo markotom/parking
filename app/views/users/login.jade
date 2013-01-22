@@ -1,0 +1,8 @@
+extends ../layout
+
+block content
+  .alert.alert-warning
+    button.close(type='button', data-dismiss='alert') ×
+    | Algunos contenidos están restringidos, necesitas iniciar sesión para poder verlos
+    
+  include _login
