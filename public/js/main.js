@@ -87,7 +87,7 @@ $(function(){
   }
 
   $('body').delegate('.confirm', 'click', function(){
-    if(confirm("¿Estás seguro que deseas \"" + $(this).attr('title') + "\"? Quizás sean irreversibles los cambios.")) {
+    if(confirm("¿Estás seguro que deseas \"" + $(this).attr('title') + "\"?")) {
       return true;
     } else {
       return false;
