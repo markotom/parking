@@ -56,7 +56,10 @@
           }
 
           if(saved.status == 'Aprobada') {
-            var message = "<p>Ya puede recoger su nueva tarjeta de estacionamiento.</p>"
+            var message = "<p>Estimado " + saved.fullname.name + " " + saved.fullname.surname + ",</p>"
+                        + "<p></p><p></p>"
+                        + "<p>Ya puedes recoger tu nueva tarjeta de estacionamiento.</p>"
+                        + "<p>Las nuevas tarjetas se entregarán en la pagaduría únicamente del 9 al 15 de febrero.</p>"
                         + "<p></p><p></p>"
                         + "<p>Atentamente,"
                         + "<br><br>Ernesto Priani Saisó"
