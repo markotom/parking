@@ -224,8 +224,9 @@
 
             default:
               message +="<p>Para obtener información del proceso de asignación de las tarjetas "
-                      + "deberás dirigirte a tu coordinación de licenciatura o a la División de "
-                      + "Estudios de Posgrado. Las nuevas tarjetas se entregarán en la pagaduría "
+                      + "deberás dirigirte a tu coordinación de licenciatura, a la División de "
+                      + "Estudios de Posgrado, al DELEFyL o al Departamento de Personal "
+                      + "Administrativo. Las nuevas tarjetas se entregarán en la pagaduría "
                       + "únicamente del 9 al 15 de febrero.</p>"
           }
 
