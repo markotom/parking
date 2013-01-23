@@ -171,13 +171,19 @@
             doc.approver = 3; // profesionales
         }
 
-        if(doc.division == 'Licenciatura') {
-          doc.college   = req.body.college;
-        }
-
-        if(doc.division == 'Posgrado') {
-          doc.graduate  = req.body.graduate;
-          doc.approver  = 4; // posgrado
+        switch(doc.division){
+          case 'Licenciatura':
+            doc.college  = req.body.college;
+          break;
+          case 'Posgrado':
+            doc.graduate = req.body.graduate;
+            doc.approver = 4; // posgrado
+          break;
+          case 'DELEFyL':
+            doc.approver = 6; // delefyl
+          break;
+          case 'SUAyED':
+            doc.approver = 7; // suayed
         }
 
 

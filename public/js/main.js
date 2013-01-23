@@ -7,7 +7,7 @@ $(function(){
         , category_ac = $('#category_ac')
         , category_ad = $('#category_ad');
 
-      if(value == 'Administrativo') {
+      if(value === 'Administrativo') {
         category_ad.show();
         category_ac.hide();
       } else {
@@ -21,13 +21,20 @@ $(function(){
         , division_pro = $('#division_pro')
         , division_pos = $('#division_pos');
 
-      if(value == 'Posgrado') {
-        division_pos.show();
-        division_pro.hide();
-      } else {
-        division_pos.hide();
-        division_pro.show();
+      switch(value){
+        case 'Posgrado':
+          division_pos.show();
+          division_pro.hide();
+        break;
+        case 'Licenciatura':
+          division_pos.hide();
+          division_pro.show();
+        break;
+        default:
+          division_pos.hide();
+          division_pro.hide();
       }
+
     });
 
     $('#entranceForm').validate({
