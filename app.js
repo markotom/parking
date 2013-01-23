@@ -6,7 +6,7 @@ requirejs.config({
 });
 
 requirejs(['express', 'passport', 'passport/local', 'routes'], 
-function(express, passport, localStrategy, routes, nodemailer){
+function(express, passport, localStrategy, routes){
   var app     = express()
     , server  = app.listen(process.env.PORT || 3000)
     , flash   = require ('connect-flash');
