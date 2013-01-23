@@ -254,7 +254,7 @@
               console.log("Mensaje enviado: " + res.message);
           });
 
-          req.flash('success', "Se ha añadido correctamente la solicitud");
+          req.flash('success_large', "Gracias por enviar tu solicitud. Recibirás un correo de confirmación.");
           res.redirect('/');
 
         });

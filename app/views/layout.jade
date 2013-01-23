@@ -59,6 +59,13 @@ html(lang="es", ng-app="app")
             | #{success}    
       - }
 
+      - success_large = flash('success_large');
+      - if(success_large.length > 0) {
+          .alert.alert-success       
+            button.close(type='button', data-dismiss='alert') ×
+            h3(style="text-align: center") #{success_large}
+      - }
+
       .alert.alert-info
         button.close(type='button', data-dismiss='alert') ×
         strong  ¿Necesitas ayuda? 
