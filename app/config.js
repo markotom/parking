@@ -17,7 +17,7 @@ define(function() {
     , mailer : {
         service: "Gmail"
       , auth: {
-            user: "sacadfyl@gmail.com"
+            user: "epriani@filos.unam.mx"
           , pass: "palindromo11"
         }
       }
