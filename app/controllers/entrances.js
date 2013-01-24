@@ -1,4 +1,4 @@
-  define(['models/entrance', 'auth', 'mailer'], function(Entrance, auth, mailer){
+  define(['models/entrance', 'auth', 'mailer', 'models/user'], function(Entrance, auth, mailer, users){
 
   var entrances = function(app){
 
@@ -35,7 +35,7 @@
           res.redirect('/');
         }
         
-        res.render('entrances/form', { item: doc });
+        res.render('entrances/form', { item: doc, users: users });
       });
 
     });
@@ -187,6 +187,10 @@
           break;
         }
 
+      }
+
+      if(req.user && req.user.id <= 2) { // admin & academica
+        doc.approver = req.body.approver;
       }
 
       if(req.body._id) {
