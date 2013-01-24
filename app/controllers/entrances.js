@@ -117,7 +117,7 @@
     });
 
     // delete
-    app.get('/accesos/:id/delete', function(req, res) {
+    app.get('/accesos/:id/delete', auth, function(req, res) {
         var id = req.params.id;
         Entrance.remove({ _id: id }, function(err, deleted) {
             if (err) {
