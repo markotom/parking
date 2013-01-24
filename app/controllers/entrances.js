@@ -160,20 +160,10 @@
         doc.category    = req.body.category_ac;
         doc.division    = req.body.division;
 
-        switch(doc.category) {
-          case 'Profesor de carrera':
-          case 'Profesor de asignatura definitivo':
-          case 'Técnico académico':
-            doc.approver = 2; // academica
-          break;
-
-          default:
-            doc.approver = 3; // profesionales
-        }
-
         switch(doc.division){
           case 'Licenciatura':
             doc.college  = req.body.college;
+            doc.approver = 3; // profesionales
           break;
           case 'Posgrado':
             doc.graduate = req.body.graduate;
@@ -184,8 +174,18 @@
           break;
           case 'SUAyED':
             doc.approver = 7; // suayed
+          break;
+          default:
+            doc.approver = 2; // academica
         }
 
+        switch(doc.category) {
+          case 'Profesor de carrera':
+          case 'Profesor de asignatura definitivo':
+          case 'Técnico académico':
+            doc.approver = 2; // academica
+          break;
+        }
 
       }
 
