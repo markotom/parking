@@ -165,6 +165,23 @@
           case 'Licenciatura':
             doc.college  = req.body.college;
             doc.approver = 3; // profesionales
+
+            switch(doc.college){
+              case 'Bibliotecología':                       doc.approver = 8; break;
+              case 'Desarrollo y Gestión Interculturales':  doc.approver = 9; break;
+              case 'Estudios Latinoamericanos':             doc.approver = 10; break;
+              case 'Filosofía':                             doc.approver = 11; break;
+              case 'Geografía':                             doc.approver = 12; break;
+              case 'Historia':                              doc.approver = 13; break;
+              case 'Letras Clásicas':                       doc.approver = 14; break;
+              case 'Letras Hispánicas':                     doc.approver = 15; break;
+              case 'Letras Modernas':                       doc.approver = 16; break;
+              case 'Literatura Dramática y Teatro':         doc.approver = 17; break;
+              case 'Pedagogía':                             doc.approver = 18; break;
+              default:
+                doc.approver = 3; // profesionales                
+            }
+
           break;
           case 'Posgrado':
             doc.graduate = req.body.graduate;
