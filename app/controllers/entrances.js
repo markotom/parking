@@ -16,7 +16,7 @@
                 if(err) {
                   res.send(500);
                 } else {
-                  res.render('entrances/index', { items: docs });
+                  res.render('entrances/index', { items: docs, users: users });
                 }
               });
     });
