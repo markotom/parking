@@ -18,8 +18,8 @@ block content
         th ID UNAM
         th Trabajador
         th Categoría
-        th Nombre
         th Apellidos
+        th Nombre
         th Estado
         th(style='width: 70px')
       each item in items
@@ -43,8 +43,8 @@ block content
 
           td= item.adscription
           td= item.category
-          td= item.fullname.name
           td= item.fullname.surname
+          td= item.fullname.name
           td= item.status
           td(style='text-align:right')
             a.confirm(href='/accesos/#{item._id}/status', title='Aprobar solicitud') 
