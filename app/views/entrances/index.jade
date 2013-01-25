@@ -37,7 +37,7 @@ block content
             | #{item.id_unam}
             - var popover_html = popover('Correo', item.email) + popover('Teléfono', item.phone) + popover('Automóvil', item.car.model) + popover('', item.car.color) + popover('', item.car.plates) + popover('', item.car.year);
             - if(item.adscription === 'Académico') {
-            - var popover_html = popover('División', item.division) + popover('Colegio', item.college) + popover_html;
+            - popover_html = popover('División', item.division) + popover('Colegio', item.college) + popover_html;
             - }
             a.btn.btn-mini.btn-block(href='javascript:;', data-content="#{popover_html}", data-original-title="Detalles", data-html='true', data-animation='false', data-trigger='hover', rel='popover') Detalles
 
