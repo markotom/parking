@@ -17,8 +17,8 @@ define(function() {
     , mailer : {
         service: "Gmail"
       , auth: {
-            user: "web@filos.unam.mx"
-          , pass: "we3f10s1m"
+            user: "sacadfyl@gmail.com"
+          , pass: "palindromo11"
         }
       }
   }
