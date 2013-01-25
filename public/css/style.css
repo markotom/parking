@@ -44,3 +44,7 @@ label.error {
   padding: 2px 8px;
   margin-top: 2px;
 }
+
+.popover {
+  min-width: 320px;
+}

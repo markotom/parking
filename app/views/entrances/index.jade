@@ -1,6 +1,12 @@
 extends ../layout
 
 block content
+  
+  - function popover(n, r) {
+  - var html = "<div class='row-fluid'><div class='span3'><span class='label btn-block' style='text-align: right'>" + n + "</span></div><div class='span8'>" + r + "</div></div>"
+  - return html;
+  - }
+
   p.well.well-small(style="text-align: center")
     button.close(type='button', data-dismiss='alert') ×
     | Se encontraron 
@@ -27,7 +33,14 @@ block content
           default
             - var classstatus = 'warning' 
         tr(class = classstatus)
-          td= item.id_unam
+          td
+            | #{item.id_unam}
+            - var popover_html = popover('Correo', item.email) + popover('Teléfono', item.phone) + popover('Automóvil', item.car.model) + popover('', item.car.color) + popover('', item.car.plates) + popover('', item.car.year);
+            - if(item.adscription === 'Académico') {
+            - var popover_html = popover('División', item.division) + popover('Colegio', item.college) + popover_html;
+            - }
+            a.btn.btn-mini.btn-block(href='javascript:;', data-content="#{popover_html}", data-original-title="Detalles", data-html='true', data-animation='false', data-trigger='hover', rel='popover') Detalles
+
           td= item.adscription
           td= item.category
           td= item.fullname.name

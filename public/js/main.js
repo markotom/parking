@@ -101,6 +101,8 @@ $(function(){
     }
   });
 
+  $('a[rel="popover"]').popover();
+
 });
 
 jQuery.extend(jQuery.validator.messages, {
