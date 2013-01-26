@@ -39,7 +39,8 @@ block content
             - if(item.adscription === 'Académico')
               - popover_html = popover('División', item.division) + popover('Colegio', item.college) + popover_html
             - each u in users
-              - popover_html += u.id === item.approver ? popover('Autoriza', u.username) : '';
+              - if (u.id === item.approver)
+                - popover_html += popover('Autoriza', u.username); break;
             a.btn.btn-mini.btn-block(href='javascript:;', data-content="#{popover_html}", data-original-title="Detalles", data-html='true', data-animation='false', data-trigger='hover', rel='popover') Detalles
 
           td= item.adscription
