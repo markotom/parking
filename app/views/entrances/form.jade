@@ -80,7 +80,7 @@ block content
           select(name='category_ad')
             option Seleccionar categoría
             each option in category_ad
-              option(select = item.category == option)= option
+              option(selected = item.category == option)= option
 
     //- Nombre
     - var name = item.fullname ? item.fullname.name : ''
