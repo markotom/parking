@@ -159,7 +159,9 @@
 
       if (doc.adscription == 'Académico') {
         doc.category    = req.body.category_ac;
-        doc.division    = req.body.division;
+
+        if(req.body.division)
+          doc.division = req.body.division;
 
         switch(doc.division){
           case 'Licenciatura':
