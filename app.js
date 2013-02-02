@@ -5,6 +5,7 @@ requirejs.config({
   , nodeRequire: require
 });
 
+
 requirejs(['express', 'passport', 'passport/local', 'routes'], 
 function(express, passport, localStrategy, routes){
   var app     = express()
@@ -40,6 +41,16 @@ function(express, passport, localStrategy, routes){
   app.use(function(req, res, next) {
     res.locals.flash  = req.flash.bind(req);
     res.locals.user   = req.user;
+    res.locals.expire = function(date) {
+      var today = new Date;
+      console.log(Date.parse(date));
+      console.log(Date.parse(today))
+      if( Date.parse(date) < Date.parse(today) )
+        return true;
+      else
+        return false;
+    }('2013-02-03'); // YYYY-MM-DD
+
     next();
   })
 

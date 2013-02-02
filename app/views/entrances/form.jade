@@ -1,173 +1,178 @@
 extends ../layout
 
 block content
-  h3 Solicitar acceso
-  form#entranceForm(method='post', action='/accesos').form-horizontal
+  - if ( !expire || ( user && user.id <= 2 ) ) {
+    h3 Solicitar acceso
+    form#entranceForm(method='post', action='/accesos').form-horizontal
 
-    legend Información general
+      legend Información general
 
-    //- Número de trabajador
-    .control-group
-      label.control-label Número de trabajador:
-      .controls
-        input(type='text', name='id_unam', value="#{item.id_unam || '' }", placeholder='Número de trabajador')  
-
-    //- Tipo de trabajador
-    - var adscription = ['Académico', 'Administrativo']
-    .control-group
-      label.control-label Tipo de trabajador:
-      .controls
-        each option in adscription
-          label.radio.inline
-            input(type='radio', name='adscription', value='#{option}', checked = item.adscription == option)
-            | #{option} 
-
-    div#category_ac.hide
-
-      //- Categoría (si es académico)
-      - var category_ac = ['Profesor de carrera', 'Profesor de asignatura definitivo', 'Profesor de asignatura', 'Técnico académico', 'Otro'];
+      //- Número de trabajador
       .control-group
-        label.control-label Categoría:
+        label.control-label Número de trabajador:
         .controls
-          select(name='category_ac')
-            option Seleccionar categoría
-            each option in category_ac
-              option(selected = item.category == option)= option
+          input(type='text', name='id_unam', value="#{item.id_unam || '' }", placeholder='Número de trabajador')  
 
-      //- División
-      - var division = ['Licenciatura', 'Posgrado', 'DELEFyL', 'SUAyED']
+      //- Tipo de trabajador
+      - var adscription = ['Académico', 'Administrativo']
       .control-group
-        label.control-label División de estudios:
+        label.control-label Tipo de trabajador:
         .controls
-          each option in division
+          each option in adscription
             label.radio.inline
-              input(type='radio', name='division', value='#{option}', checked = item.division == option)
+              input(type='radio', name='adscription', value='#{option}', checked = item.adscription == option)
               | #{option} 
 
-      #division_pro.hide
+      div#category_ac.hide
 
-        //- Colegio
-        - var colleges = ['Bibliotecología','Desarrollo y Gestión Interculturales','Estudios Latinoamericanos','Filosofía','Geografía','Historia','Letras Clásicas','Letras Hispánicas','Letras Modernas','Literatura Dramática y Teatro','Pedagogía']
+        //- Categoría (si es académico)
+        - var category_ac = ['Profesor de carrera', 'Profesor de asignatura definitivo', 'Profesor de asignatura', 'Técnico académico', 'Otro'];
         .control-group
-          label.control-label Colegio:
+          label.control-label Categoría:
           .controls
-            select(name='college')
-              option(value="0") Seleccionar colegio
-              each option in colleges
-                option(selected = item.college == option)= option
+            select(name='category_ac')
+              option Seleccionar categoría
+              each option in category_ac
+                option(selected = item.category == option)= option
 
-      #division_pos.hide
-        
-        //- Posgrado
-        - var graduates = ['Antropología', 'Bibliotecología y Estudios de la Información', 'Bioética', 'Estudios Latinoamericanos', 'Estudios Mesoamericanos', 'Filosofía', 'Filosofía de la Ciencia', 'Geografía', 'Historia', 'Historia del Arte', 'Letras', 'Lingüística', 'MADEMS', 'Pedagogía']
+        //- División
+        - var division = ['Licenciatura', 'Posgrado', 'DELEFyL', 'SUAyED']
         .control-group
-          label.control-label Posgrado:
+          label.control-label División de estudios:
           .controls
-            select(name='graduate')
-              option(value="0") Seleccionar posgrado
-              each option in graduates
-                option(selected = item.graduate == option)= option 
-              span.help-block
-                small Deja en blanco si no estás adscrito a un programa de posgrado
+            each option in division
+              label.radio.inline
+                input(type='radio', name='division', value='#{option}', checked = item.division == option)
+                | #{option} 
 
-    div#category_ad.hide
+        #division_pro.hide
 
-      //- Categoría (si es administrativo)
-      - var category_ad = ['Base', 'Confianza', 'Funcionario']
+          //- Colegio
+          - var colleges = ['Bibliotecología','Desarrollo y Gestión Interculturales','Estudios Latinoamericanos','Filosofía','Geografía','Historia','Letras Clásicas','Letras Hispánicas','Letras Modernas','Literatura Dramática y Teatro','Pedagogía']
+          .control-group
+            label.control-label Colegio:
+            .controls
+              select(name='college')
+                option(value="0") Seleccionar colegio
+                each option in colleges
+                  option(selected = item.college == option)= option
+
+        #division_pos.hide
+          
+          //- Posgrado
+          - var graduates = ['Antropología', 'Bibliotecología y Estudios de la Información', 'Bioética', 'Estudios Latinoamericanos', 'Estudios Mesoamericanos', 'Filosofía', 'Filosofía de la Ciencia', 'Geografía', 'Historia', 'Historia del Arte', 'Letras', 'Lingüística', 'MADEMS', 'Pedagogía']
+          .control-group
+            label.control-label Posgrado:
+            .controls
+              select(name='graduate')
+                option(value="0") Seleccionar posgrado
+                each option in graduates
+                  option(selected = item.graduate == option)= option 
+                span.help-block
+                  small Deja en blanco si no estás adscrito a un programa de posgrado
+
+      div#category_ad.hide
+
+        //- Categoría (si es administrativo)
+        - var category_ad = ['Base', 'Confianza', 'Funcionario']
+        .control-group
+          label.control-label Categoría:
+          .controls
+            select(name='category_ad')
+              option Seleccionar categoría
+              each option in category_ad
+                option(selected = item.category == option)= option
+
+      //- Nombre
+      - var name = item.fullname ? item.fullname.name : ''
       .control-group
-        label.control-label Categoría:
+        label.control-label Nombre:
         .controls
-          select(name='category_ad')
-            option Seleccionar categoría
-            each option in category_ad
-              option(selected = item.category == option)= option
+          input(type='text', name="fullname[name]", value="#{name || '' }", placeholder='Nombre')
 
-    //- Nombre
-    - var name = item.fullname ? item.fullname.name : ''
-    .control-group
-      label.control-label Nombre:
-      .controls
-        input(type='text', name="fullname[name]", value="#{name || '' }", placeholder='Nombre')
-
-    //- Apellidos
-    - var surname = item.fullname ? item.fullname.surname : ''
-    .control-group
-      label.control-label Apellidos:
-      .controls
-        input(type='text', name="fullname[surname]", value='#{surname || '' }', placeholder='Apellidos')
-
-    legend Información de contacto
-    
-    //- Correo
-    .control-group
-      label.control-label Correo:
-      .controls
-        input#email(type='text', name='email', value='#{item.email || '' }', placeholder='Correo')
-
-    //- Correo (repear)
-    .control-group
-      label.control-label Repetir correo:
-      .controls
-        input(type='text', name='email2', value='#{item.email || '' }', placeholder='Repetir correo')
-
-    //- Teléfono
-    .control-group
-      label.control-label Teléfono:
-      .controls
-        input(type='text', name='phone', value='#{item.phone || '' }', placeholder='Teléfono')
-        span.help-block
-          small 
-            | Si no tienes correo, proporciona tu número telefónico para poder tener información de contacto. 
-            | Será necesario para poderte avisar si la solicitud fue aprobada.
-
-    legend Información del automóvil
-
-    //- Modelo
-    - var model = item.car ? item.car.model : ''
-    .control-group
-      label.control-label Modelo:
-      .controls
-        input(type='text', name='car[model]', value='#{model || '' }', placeholder='Modelo')
-
-    //- Color
-    - var color = item.car ? item.car.color : ''
-    .control-group
-      label.control-label Color:
-      .controls
-        input(type='text', name='car[color]', value='#{color || '' }', placeholder='Color')
-
-    //- Placas
-    - var plates = item.car ? item.car.plates : ''
-    .control-group
-      label.control-label Placas:
-      .controls
-        input(type='text', name='car[plates]', value='#{plates || '' }', placeholder='Placas')
-
-    //- Año
-    - var year = item.car ? item.car.year : ''
-    .control-group
-      label.control-label Año:
-      .controls
-        input(type='text', name='car[year]', value='#{year || '' }', placeholder='Año')
-
-    - if(item._id) {
-      input(type='hidden', name='_id', value='#{item._id || ''}');
-    - }
-
-    - if (user && user.id <= 2 && item._id) {
-
-      legend Administrar
-
-      //- Approver
+      //- Apellidos
+      - var surname = item.fullname ? item.fullname.surname : ''
       .control-group
-        label.control-label ¿Quién aprueba?:
+        label.control-label Apellidos:
         .controls
-          select(name='approver')
-            option(value="1") Seleccionar usuario
-            each option in users
-              option(selected = item.approver == option.id, value = option.id)= option.username
+          input(type='text', name="fullname[surname]", value='#{surname || '' }', placeholder='Apellidos')
 
-    - } 
+      legend Información de contacto
+      
+      //- Correo
+      .control-group
+        label.control-label Correo:
+        .controls
+          input#email(type='text', name='email', value='#{item.email || '' }', placeholder='Correo')
 
-    .form-actions
-      button.btn.btn-success(type='submit') Solicitar
+      //- Correo (repear)
+      .control-group
+        label.control-label Repetir correo:
+        .controls
+          input(type='text', name='email2', value='#{item.email || '' }', placeholder='Repetir correo')
+
+      //- Teléfono
+      .control-group
+        label.control-label Teléfono:
+        .controls
+          input(type='text', name='phone', value='#{item.phone || '' }', placeholder='Teléfono')
+          span.help-block
+            small 
+              | Si no tienes correo, proporciona tu número telefónico para poder tener información de contacto. 
+              | Será necesario para poderte avisar si la solicitud fue aprobada.
+
+      legend Información del automóvil
+
+      //- Modelo
+      - var model = item.car ? item.car.model : ''
+      .control-group
+        label.control-label Modelo:
+        .controls
+          input(type='text', name='car[model]', value='#{model || '' }', placeholder='Modelo')
+
+      //- Color
+      - var color = item.car ? item.car.color : ''
+      .control-group
+        label.control-label Color:
+        .controls
+          input(type='text', name='car[color]', value='#{color || '' }', placeholder='Color')
+
+      //- Placas
+      - var plates = item.car ? item.car.plates : ''
+      .control-group
+        label.control-label Placas:
+        .controls
+          input(type='text', name='car[plates]', value='#{plates || '' }', placeholder='Placas')
+
+      //- Año
+      - var year = item.car ? item.car.year : ''
+      .control-group
+        label.control-label Año:
+        .controls
+          input(type='text', name='car[year]', value='#{year || '' }', placeholder='Año')
+
+      - if(item._id) {
+        input(type='hidden', name='_id', value='#{item._id || ''}');
+      - }
+
+      - if (user && user.id <= 2 && item._id) {
+
+        legend Administrar
+
+        //- Approver
+        .control-group
+          label.control-label ¿Quién aprueba?:
+          .controls
+            select(name='approver')
+              option(value="1") Seleccionar usuario
+              each option in users
+                option(selected = item.approver == option.id, value = option.id)= option.username
+
+      - } 
+
+      .form-actions
+        button.btn.btn-success(type='submit') Solicitar
+  - } else {
+    .well
+      p Ya no se pueden solicitar tarjetas de estacionamiento
+  - }
