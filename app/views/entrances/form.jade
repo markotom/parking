@@ -1,7 +1,7 @@
 extends ../layout
 
 block content
-  - if ( !expire || ( user && user.id <= 2 ) ) {
+  - if ( !expire || ( user && user.id <= 5 ) ) {
     h3 Solicitar acceso
     form#entranceForm(method='post', action='/accesos').form-horizontal
 
@@ -155,7 +155,7 @@ block content
         input(type='hidden', name='_id', value='#{item._id || ''}');
       - }
 
-      - if (user && user.id <= 2 && item._id) {
+      - if (user && user.id <= 5 && item._id) {
 
         legend Administrar
 
