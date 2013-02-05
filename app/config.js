@@ -15,7 +15,8 @@ define(function() {
         db   : 'filos_estacionamiento'
       }
     , mailer : {
-        service: "Gmail"
+        service: "Sendmail"
+      , sendmail: "/usr/sbin/sendmail"
       , auth: {
             user: "sacadfyl@gmail.com"
           , pass: "palindromo11"
