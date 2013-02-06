@@ -62,17 +62,17 @@
                         + "<p>Sus datos han sido registrados y se le asignó una nueva tarjeta de ingreso al "
                         + "estacionamiento. Le informamos que podrá recoger su tarjeta en la pagaduría únicamente "
                         + "del 11 al 15 de febrero. Para que le sea entregada, es necesario que presente copia o la "
-                        + "tarjeta de circulación del automóvil que registro en la solicitud.</p>"
+                        + "tarjeta de circulación del automóvil que registró en su solicitud.</p>"
                         + "<p></p><p></p>"
                         + "<p>Por el momento podrá seguir utilizando la tarjeta anterior (blanca), y posteriormente "
-                        + "le informaremos a partir de que día, el ingreso será únicamente con la nueva tarjeta.</p>"
+                        + "le informaremos a partir de que día el ingreso será únicamente con la nueva tarjeta.</p>"
                         + "<p></p><p></p>"
-                        + "<p><strong>Nota: La tarjeta permanente que se le entregará no tiene costo, pero en caso de "
+                        + "<p>Nota: La tarjeta permanente que se le entregará no tiene costo, pero en caso de "
                         + "extravío, deberá reportarla en pagaduría y si requiere una reposición, el costo de la misma "
-                        + "será de $500.00 pesos, monto equivalente sólo al costo de recuperación del plástico.</strong></p>"
+                        + "será de $500.00 pesos, monto equivalente sólo al costo de recuperación del plástico.</p>"
                         + "<p></p><p></p>"
                         + "<p>Atentamente,"
-                        + "<br><br>Dr. Ernesto Priani Saisó"
+                        + "<br>Dr. Ernesto Priani Saisó"
                         + "<br>Secretario Académico</p>";
 
             var mailOptions = {
