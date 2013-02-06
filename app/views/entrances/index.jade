@@ -49,17 +49,30 @@ block content
           td= item.fullname.name
           td= item.status
           td(style='text-align:right')
-            a.confirm(href='/accesos/#{item._id}/status', title='Aprobar solicitud') 
-              i.icon-ok-circle
+            a.confirm.btn.btn-block.btn-mini.btn-success(href='/accesos/#{item._id}/status', title='Aprobar solicitud') 
+              case item.status
+                when 'Aprobada'
+                  i.icon-envelope.icon-white 
+                  |  Avisar
+                when 'Confirmar'
+                  i.icon-envelope.icon-white 
+                  |  Avisar
+                default
+                  i.icon-ok-circle.icon-white 
+                  |  Aprobar
+            - if ( 'Aprobada' !== item.status )
+              a.confirm.btn.btn-block.btn-mini.btn-danger(href='/accesos/#{item._id}/revoke', title='Rechazar solicitud')
+                i.icon-ban-circle.icon-white 
+                |  Rechazar
             | 
-            a.confirm(href='/accesos/#{item._id}/revoke', title='Rechazar solicitud')
-              i.icon-ban-circle
+            a.btn.btn-block.btn-mini.btn-primary(href="/accesos/#{item._id}")
+              i.icon-pencil.icon-white
+              |  Editar
             | 
-            a(href="/accesos/#{item._id}")
-              i.icon-pencil
-            | 
-            a.confirm(href='/accesos/#{item._id}/delete', title='Eliminar solicitud')
-              i.icon-trash
+            - if ( 'Aprobada' !== item.status )
+              a.confirm.btn.btn-block.btn-mini.btn-danger(href='/accesos/#{item._id}/delete', title='Eliminar solicitud')
+                i.icon-trash.icon-white
+                |  Eliminar
             
   - } else {
     p.well.well-large(style="text-align: center")
