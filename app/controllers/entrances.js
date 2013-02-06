@@ -57,13 +57,24 @@
           }
 
           if(saved.status == 'Aprobada') {
-            var message = "<p>Estimado " + saved.fullname.name + " " + saved.fullname.surname + ",</p>"
+            var message = "<p>Estimado(a) " + saved.fullname.name + " " + saved.fullname.surname + ",</p>"
                         + "<p></p><p></p>"
-                        + "<p>Ya puedes recoger tu nueva tarjeta de estacionamiento.</p>"
-                        + "<p>Las nuevas tarjetas se entregarán en la pagaduría únicamente del 9 al 15 de febrero.</p>"
+                        + "<p>Sus datos han sido registrados y se le asignó una nueva tarjeta de ingreso "
+                        + "al estacionamiento. Le informamos que podrá recoger su tarjeta en la pagaduría "
+                        + "únicamente del 8 al 15 de febrero. Para que le sea entregada, es necesario que "
+                        + "presente copia o la tarjeta de circulación del automóvil que registro en la solicitud.</p>"
+                        + "<p></p><p></p>"
+                        + "<p>Por el momento podrá seguir utilizando la tarjeta anterior (blanca), y en tiempo "
+                        + "y forma haremos de su conocimiento a partir de qué día, el ingreso será únicamente "
+                        + "con la nueva tarjeta.</p>"
+                        + "<p></p><p></p>"
+                        + "<p><strong>Nota</stron>: La tarjeta permanente que se le entregará no tiene costo, "
+                        + "pero en caso de extravío, deberá reportarla en Personal Administrativo con el Lic. "
+                        + "Gonzalo Uribe y si requiere una reposición, el costo de la misma será de $500.00 pesos, "
+                        + "monto equivalente sólo al costo de recuperación del plástico.</p>"
                         + "<p></p><p></p>"
                         + "<p>Atentamente,"
-                        + "<br><br>Ernesto Priani Saisó"
+                        + "<br><br>Dr. Ernesto Priani Saisó"
                         + "<br>Secretario Académico</p>";
 
             var mailOptions = {
