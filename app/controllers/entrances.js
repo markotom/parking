@@ -220,7 +220,7 @@
 
       }
 
-      if(req.user && req.user.id <= 2) { // admin & academica
+      if(req.user && req.user.id <= 5) {
         doc.approver = req.body.approver;
       }
 
