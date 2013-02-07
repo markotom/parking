@@ -25,6 +25,9 @@
     app.get('/solicitudes.csv', function(req, res){
       var conditions = {};
 
+      conditions.status = req.query.status || 'Aprobada';
+
+
       Entrance.find(conditions)
               .sort({ 'fullname.surname': -1 })
               .exec(function (err, docs) {
@@ -58,8 +61,8 @@
                   };
 
                   json2csv({ data: json , fields: [ 'ID UNAM', 'Tipo', 'Apellidos', 'Nombre', 'Correo', 'Categoría', 'División', 'Colegio', 'Posgrado', 'Placas', 'Modelo', 'Color', 'Año', 'Estado' ]}, function(csv){
-                    res.header("Content-Type", "application/vnd.ms-excel; charset=iso-8859-1");  
-                    res.send(csv.toString("iso-8859-1"));
+                    res.header("Content-Type", "application/vnd.ms-excel");
+                    res.send(csv);
                   });
                   
                 }
