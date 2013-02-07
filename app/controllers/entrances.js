@@ -1,4 +1,5 @@
-  define(['models/entrance', 'auth', 'mailer', 'models/user'], function(Entrance, auth, mailer, users){
+  define(['models/entrance', 'auth', 'mailer', 'models/user', 'json2csv'], 
+  function(Entrance, auth, mailer, users, json2csv){
 
   var entrances = function(app){
 
@@ -17,6 +18,50 @@
                   res.send(500);
                 } else {
                   res.render('entrances/index', { items: docs, users: users });
+                }
+              });
+    });
+
+    app.get('/solicitudes.csv', function(req, res){
+      var conditions = { 'status': 'Aprobada' };
+
+      Entrance.find(conditions)
+              .sort({ 'fullname.surname': 1 })
+              .exec(function (err, docs) {
+                if(err) {
+                  res.send(500);
+                } else {
+
+                  var json = [], doc;
+
+                  for (var i = docs.length - 1; i >= 0; i--) {
+
+                    doc = docs[i];
+
+                    json.push({
+                        "ID UNAM": doc['id_unam'] || ''
+                      , "Tipo": doc['adscription'] || ''
+                      , "Apellidos": doc['fullname']['surname'] || ''
+                      , "Nombre": doc['fullname']['name'] || ''
+                      , "Correo": doc['email'] || ''
+                      , "Teléfono": doc['phone'] || ''
+                      , "Categoría": doc['category'] || ''
+                      , "División": doc['division'] || ''
+                      , "Colegio": doc['college'] || ''
+                      , "Posgrado": doc['graduate'] || ''
+                      , "Placas": doc['car']['plates'] || ''
+                      , "Modelo": doc['car']['model'] || ''
+                      , "Color": doc['car']['color'] || ''
+                      , "Año": doc['car']['year'] || ''
+                      , "Estado": doc['status'] || ''
+                    });
+                  };
+
+                  json2csv({ data: json , fields: [ 'ID UNAM', 'Tipo', 'Apellidos', 'Nombre', 'Correo', 'Categoría', 'División', 'Colegio', 'Posgrado', 'Placas', 'Modelo', 'Color', 'Año', 'Estado' ]}, function(csv){
+                    res.header("Content-Type", "application/vnd.ms-excel; charset=iso-8859-1");  
+                    res.send(csv.toString("iso-8859-1"));
+                  });
+                  
                 }
               });
     });
