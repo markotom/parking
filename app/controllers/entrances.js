@@ -26,7 +26,7 @@
       var conditions = {};
 
       Entrance.find(conditions)
-              .sort({ 'fullname.surname': 1 })
+              .sort({ 'fullname.surname': -1 })
               .exec(function (err, docs) {
                 if(err) {
                   res.send(500);
