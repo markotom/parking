@@ -23,7 +23,7 @@
     });
 
     app.get('/solicitudes.csv', function(req, res){
-      var conditions = { 'status': 'Aprobada' };
+      var conditions = {};
 
       Entrance.find(conditions)
               .sort({ 'fullname.surname': 1 })
