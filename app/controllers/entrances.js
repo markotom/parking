@@ -22,6 +22,35 @@
               });
     });
 
+    app.get('/count', function(req, res){
+      var conditions = {};
+      Entrance.find(conditions)
+              .exec(function (err, docs) {
+
+                var aprobadas = 0
+                  , confirmar = 0
+                  , rechazadas = 0
+                  , pendientes = 0;
+
+                for (var i = docs.length - 1; i >= 0; i--) {
+
+                  switch(docs[i]['status']){
+                    case 'Aprobada': aprobadas++; break;
+                    case 'Confirmar': confirmar++; break;
+                    case 'Rechazada': rechazadas++; break;
+                    case 'Pendiente': pendientes++; break;
+                  }
+
+                }
+
+                var message = "Aprobadas: " + aprobadas + "<br>" + "Confirmar: " + confirmar + "<br>" + "Rechazadas: " + rechazadas + "<br>" + "Pendientes: " + pendientes; 
+
+                res.header('Content-Type', 'text/html');
+                res.send(message);
+                
+              });
+    });
+
     app.get('/solicitudes.csv', function(req, res){
       var conditions = {};
 
