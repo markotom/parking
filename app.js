@@ -49,7 +49,7 @@ function(express, passport, localStrategy, routes){
         return true;
       else
         return false;
-    }('2013-02-09'); // YYYY-MM-DD
+    }('2013-02-08'); // YYYY-MM-DD
 
     next();
   })
