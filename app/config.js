@@ -15,11 +15,22 @@ define(function() {
         db   : 'filos_estacionamiento'
       }
     , mailer : {
-        service: "Sendmail"
-      , sendmail: "/usr/sbin/sendmail"
-      , auth: {
-            user: "sacadfyl@gmail.com"
-          , pass: "palindromo11"
+        service: "ses"
+      , sendmail: {
+          path: "/usr/sbin/sendmail"
+        }
+      , gmail: {
+          auth: {
+              user: "sacadfyl@gmail.com"
+            , pass: "palindromo11"
+          }
+        }
+      , ses : {
+          auth: {
+              accesskey: "AKIAI2F6B4SB7FBJAXIQ"
+            , secretkey: "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"
+            , serviceurl: "https://email.us-east-1.amazonaws.com"
+          }
         }
       }
   }

@@ -4,13 +4,19 @@ define(['nodemailer', 'config'], function(nodemailer, config){
 
 	switch( config.mailer.service ) {
 
-		case 'Gmail':
-			// smtp gmail
-			transport = nodemailer.createTransport("SMTP", config.mailer);
+		case 'gmail':
+			transport = nodemailer.createTransport("SMTP", config.mailer.gmail);
+		break;
+
+		case 'ses':
+			transport = nodemailer.createTransport("SES", {
+        AWSAccessKeyID: config.mailer.ses.auth.accesskey,
+        AWSSecretKey: config.mailer.ses.auth.secretkey
+	    });
 		break;
 
 		default:
-			transport = nodemailer.createTransport("Sendmail", config.mailer.sendmail);
+			transport = nodemailer.createTransport("Sendmail", config.mailer.sendmail.path);
 
 	}
 
