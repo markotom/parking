@@ -2,58 +2,6 @@
   function(Entrance, auth, mailer, users, json2csv){
 
   var entrances = function(app){
-    app.get('/send', auth, function(req, res) {
-      var conditions = { status: 'Aprobada' };
-
-      Entrance.find(conditions)
-              .exec(function(err, docs){
-                if(err) {
-                  res.send(500);
-                } else {
-
-                  docs.forEach(function(doc){
-
-                    var message = "<p>Estimado(a) " + doc.fullname.name + " " + doc.fullname.surname + ",</p>"
-                                + "<p></p><p></p>"
-                                + "<p>Sus datos han sido registrados y se le asignó una nueva tarjeta de ingreso al "
-                                + "estacionamiento. Debido a la prórroga de los días 6 y 7 de febrero se recorre la fecha de entrega de tarjetas. "
-                                + "Le informamos que podrá recoger su tarjeta en la pagaduría únicamente "
-                                + "del 13 al 20 de febrero, de 10:00 a 13:00 hrs. y de 17:00 a 19:00 hrs. Para que le sea entregada, es necesario que presente copia o la "
-                                + "tarjeta de circulación del automóvil que registró en su solicitud.</p>"
-                                + "<p></p><p></p>"
-                                + "<p>Por el momento podrá seguir utilizando la tarjeta anterior (blanca), y posteriormente "
-                                + "le informaremos a partir de que día el ingreso será únicamente con la nueva tarjeta.</p>"
-                                + "<p></p><p></p>"
-                                + "<p>Nota: La tarjeta permanente que se le entregará no tiene costo, pero en caso de "
-                                + "extravío, deberá reportarla en pagaduría y si requiere una reposición, el costo de la misma "
-                                + "será de $500.00 pesos, monto equivalente sólo al costo de recuperación del plástico.</p>"
-                                + "<p></p><p></p>"
-                                + "<p>Atentamente,"
-                                + "<br>Dr. Ernesto Priani Saisó"
-                                + "<br>Secretario Académico</p>";
-
-                    
-                    var mailOptions = {
-                        from:     "Secretaría Académica <sacadfyl@gmail.com>"
-                      , to:       doc.email
-                      , subject:  "Entrega de tarjeta de estacionamiento"
-                      , html:     message
-                    };
-                    
-                    // send mail with gmail
-                    mailer.sendMail(mailOptions, function(err, res){
-                      if(!err)
-                        console.log("Mensaje enviado: " + res.message);
-                    });
-
-
-                  });
-
-                  res.send(200);
-
-                }
-              });
-    });
 
     // retrieve all entrances
     app.get('/accesos', auth, function(req, res){
