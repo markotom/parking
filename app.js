@@ -43,8 +43,6 @@ function(express, passport, localStrategy, routes){
     res.locals.user   = req.user;
     res.locals.expire = function(date) {
       var today = new Date;
-      console.log(Date.parse(date));
-      console.log(Date.parse(today))
       if( Date.parse(date) < Date.parse(today) )
         return true;
       else
