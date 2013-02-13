@@ -5,7 +5,7 @@ define(function() {
     , { id: 2, username: 'academica',     password: 'palindromo11', email: 'sacadfyl@gmail.com' }
     , { id: 3, username: 'profesionales', password: 'palindromo11',     email: 'floresfarfanleticia@gmail.com' }
     , { id: 4, username: 'posgrado',      password: 'palindromo11',     email: 'eramirez@unam.mx' }
-    , { id: 5, username: 'personal',      password: 'palindromo11',     email: 'gonyuj@hotmail.com' }
+    , { id: 5, username: 'personal',      password: 'amZk',     email: 'gonyuj@hotmail.com' }
     , { id: 6, username: 'delefyl',       password: 'palindromo11',     email: 'delefyl@yahoo.com.mx' }
     , { id: 7, username: 'suayed',        password: 'palindromo11',     email: 'divisionsuayedfilos@yahoo.com.mx' }
     
@@ -18,8 +18,8 @@ define(function() {
     , { id: 14, username: 'letrasc',      password: 'palindromo11',     email: 'patvillase@yahoo.com.mx' }
     , { id: 15, username: 'letrash',      password: 'palindromo11',     email: 'colegiodehispanicas@gmail.com' }
     , { id: 16, username: 'letrasm',      password: 'palindromo11',     email: 'noemi.novell@gmail.com' }
-    , { id: 17, username: 'teatro',       password: 'palindromo11',     email: 'colegio.de.teatro.unam@gmail.com' }
-    , { id: 18, username: 'pedagogia',    password: 'palindromo11',     email: 'colegiopedagogia@gmail.com' }
+    , { id: 17, username: 'teatro',       password: 'RZ85',     email: 'colegio.de.teatro.unam@gmail.com' }
+    , { id: 18, username: 'pedagogia',    password: '8SqV',     email: 'colegiopedagogia@gmail.com' }
   ];
 
   return users;
