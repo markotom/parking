@@ -219,7 +219,7 @@
         });
     });
 
-    app.get('/accesos/:id/print', function(req, res){
+    app.get('/accesos/:id/print', auth, function(req, res){
       var id = req.params.id;
       Entrance.findOne({ _id: id }, function(err, doc){
         if(err){
