@@ -25,6 +25,7 @@
     app.get('/accesos/print', auth, function(req, res){
       var conditions = { status: 'Aprobada' };
       Entrance.find(conditions)
+              .sort({ 'fullname.surname': 1 })
               .exec(function(err, docs){
                 if(err){
                   res.send(500);
