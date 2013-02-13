@@ -73,6 +73,10 @@ block content
               a.confirm.btn.btn-block.btn-mini.btn-danger(href='/accesos/#{item._id}/delete', title='Eliminar solicitud')
                 i.icon-trash.icon-white
                 |  Eliminar
+            - if ( 'Aprobada' === item.status )
+              a.btn.btn-block.btn-mini(href='/accesos/#{item._id}/print', title='Imprimir solicitud')
+                i.icon-print
+                |  Imprimir
             
   - } else {
     p.well.well-large(style="text-align: center")
