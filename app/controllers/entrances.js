@@ -22,6 +22,18 @@
               });
     });
 
+    app.get('/accesos/print', auth, function(req, res){
+      var conditions = { status: 'Aprobada' };
+      Entrance.find(conditions)
+              .exec(function(err, docs){
+                if(err){
+                  res.send(500);
+                } else {
+                  res.render('entrances/print-all', { docs: docs })
+                }
+              });
+    });
+
     app.get('/count', function(req, res){
       var conditions = {};
       Entrance.find(conditions)
