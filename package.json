@@ -14,6 +14,7 @@
     , "connect-flash": "0.1.x"
     , "nodemailer": "0.3.x"
     , "json2csv": ""
+    , "underscore": ""
   }
   , "engines": {
     "node": "0.8.x"

@@ -1,5 +1,12 @@
-  define(['models/entrance', 'auth', 'mailer', 'models/user', 'json2csv'], 
-  function(Entrance, auth, mailer, users, json2csv){
+  define(['underscore', 'models/entrance', 'auth', 'mailer', 'models/user', 'json2csv'], 
+  function(_, Entrance, auth, mailer, users, json2csv){
+
+  function alphabetically(a, b){
+    var name  = a.fullname.surname.toLowerCase()
+      , name2 = b.fullname.surname.toLowerCase();
+
+    return name > name2 ? 1 : -1;
+  }
 
   var entrances = function(app){
 
@@ -12,11 +19,11 @@
         conditions.approver = req.user.id;
 
       Entrance.find(conditions)
-              .sort({ 'fullname.surname': 1 })
               .exec(function (err, docs) {
                 if(err) {
                   res.send(500);
                 } else {
+                  docs = _(docs).sort(alphabetically);
                   res.render('entrances/index', { items: docs, users: users });
                 }
               });
@@ -25,11 +32,11 @@
     app.get('/accesos/print', auth, function(req, res){
       var conditions = { status: 'Aprobada' };
       Entrance.find(conditions)
-              .sort({ 'fullname.surname': 1 })
               .exec(function(err, docs){
                 if(err){
                   res.send(500);
                 } else {
+                  docs = _(docs).sort(alphabetically);
                   res.render('entrances/print-all', { docs: docs })
                 }
               });
@@ -71,13 +78,13 @@
 
 
       Entrance.find(conditions)
-              .sort({ 'fullname.surname': -1 })
               .exec(function (err, docs) {
                 if(err) {
                   res.send(500);
                 } else {
 
                   var json = [], doc;
+                  docs = _(docs).sort(alphabetically);
 
                   for (var i = docs.length - 1; i >= 0; i--) {
 
@@ -101,6 +108,7 @@
                       , "Estado": doc['status'] || ''
                     });
                   };
+
 
                   json2csv({ data: json , fields: [ 'ID UNAM', 'Tipo', 'Apellidos', 'Nombre', 'Correo', 'Categoría', 'División', 'Colegio', 'Posgrado', 'Placas', 'Modelo', 'Color', 'Año', 'Estado' ]}, function(csv){
                     res.header("Content-Type", "application/vnd.ms-excel");
