@@ -25,6 +25,9 @@ define(['models/mongo'], function(mongo) {
       , default: 'Pendiente'
     }
     , approver: Number
+    , card: {
+        type: Number
+    }
   });
 
   var Entrance = mongo.model('Entrance', schema); 

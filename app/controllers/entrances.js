@@ -269,6 +269,7 @@
           , color:      req.body.car.color
           , year:       parseFloat(req.body.car.year)
         }
+        , card:         parseFloat(req.body.card) || null
       };
 
       if (doc.adscription == 'Administrativo') {

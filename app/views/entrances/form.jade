@@ -168,6 +168,12 @@ block content
               each option in users
                 option(selected = item.approver == option.id, value = option.id)= option.username
 
+        //- Card
+        .control-group
+          label.control-label Tarjeta asignada:
+          .controls
+            input(type='text', name='card', value='#{item.card || '' }', placeholder='Tarjeta de estacionamiento')
+
       - } 
 
       .form-actions
