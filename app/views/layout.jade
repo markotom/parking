@@ -28,9 +28,10 @@ html(lang="es", ng-app="app")
                 a(href='/') Inicio
               li
                 a(href='/accesos/add') Solicitar tarjeta
-            - if (user) {
-                a.btn.btn-danger(href='/accesos') Consultar solicitudes
-            - }
+              - if (user)
+                  li
+                    a(href='/accesos')
+                      strong Consultar solicitudes
 
 
             p.navbar-text.pull-right
