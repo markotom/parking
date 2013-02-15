@@ -269,7 +269,6 @@
           , color:      req.body.car.color
           , year:       parseFloat(req.body.car.year)
         }
-        , card:         parseFloat(req.body.card) || null
       };
 
       if (doc.adscription == 'Administrativo') {
@@ -329,8 +328,15 @@
 
       }
 
-      if(req.user && req.user.id <= 5) {
+      if(req.user && req.user.id <= 2) {
         doc.approver = req.body.approver;
+
+        if(req.body.card) {
+          doc.card = {
+              number:     parseFloat(req.body.card.number) || null
+            , delivered:  req.body.card.delivered || null
+          }
+        }
       }
 
       if(req.body._id) {

@@ -26,7 +26,11 @@ define(['models/mongo'], function(mongo) {
     }
     , approver: Number
     , card: {
-        type: Number
+        number: Number
+      , delivered: {
+            type: Boolean
+          , default: false
+        }
     }
   });
 

@@ -155,7 +155,7 @@ block content
         input(type='hidden', name='_id', value='#{item._id || ''}');
       - }
 
-      - if (user && user.id <= 5 && item._id) {
+      - if (user && user.id <= 2 && item._id) {
 
         legend Administrar
 
@@ -169,10 +169,21 @@ block content
                 option(selected = item.approver == option.id, value = option.id)= option.username
 
         //- Card
+        - var card_number = item.card ? item.card.number : ''
         .control-group
           label.control-label Tarjeta asignada:
           .controls
-            input(type='text', name='card', value='#{item.card || '' }', placeholder='Tarjeta de estacionamiento')
+            input(type='text', name='card[number]', value='#{card_number || '' }', placeholder='Tarjeta de estacionamiento')
+        
+        - var card_delivered = item.card ? item.card.delivered : false
+        .control-group
+          label.control-label 
+          .controls
+            input(type='checkbox', checked = card_delivered == true, name='card[delivered]', value='true')
+            |  Entregada
+            span.help-block
+              small 
+                | Seleccionar si la tarjeta ya se entregó al solicitante
 
       - } 
 
