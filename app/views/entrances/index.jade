@@ -35,7 +35,10 @@ block content
         tr(class = classstatus)
           td
             | #{item.id_unam}
-            - var popover_html = popover('Correo', item.email) + popover('Teléfono', item.phone) + popover('Automóvil', item.car.model) + popover('', item.car.color) + popover('', item.car.plates) + popover('', item.car.year);
+            - var popover_html = ""
+            - if(item.card && item.card.number)
+              - popover_html += popover('Tarjeta', item.card.number)
+            - popover_html += popover('Correo', item.email) + popover('Teléfono', item.phone) + popover('Automóvil', item.car.model) + popover('', item.car.color) + popover('', item.car.plates) + popover('', item.car.year);
             - if(item.adscription === 'Académico')
               - popover_html = popover('División', item.division) + popover('Colegio', item.college) + popover_html
             - each u in users
