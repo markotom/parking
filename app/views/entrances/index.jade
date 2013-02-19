@@ -12,6 +12,34 @@ block content
     | Se encontraron 
     b= items.length
     |  solicitudes
+
+  .btn-group.pull-left(style='margin-bottom: 10px')
+    a.btn.dropdown-toggle(data-toggle='dropdown', href='#')
+      | Filtros 
+      span.caret
+    ul.dropdown-menu
+      li
+        a(href='/accesos/filter/1') Todas
+      li
+        a(href='/accesos/filter/2') Aprobadas
+      li
+        a(href='/accesos/filter/3') Confirmar
+      li
+        a(href='/accesos/filter/4') Rechazadas
+      li
+        a(href='/accesos/filter/5') Pendientes
+      li
+        a(href='/accesos/filter/6') Tarjetas entregadas
+      li
+        a(href='/accesos/filter/7') Tarjetas por entregar
+      li
+        a(href='/accesos/filter/8') Aprobadas sin tarjeta
+
+  - if(filter && filter.filter)
+    p.alert.pull-right
+      strong Filtro: 
+      | #{filter.filter}
+
   - if (items.length > 0) {
     table.table.table-bordered.table-hover.table-striped
       tr

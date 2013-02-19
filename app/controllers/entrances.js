@@ -15,6 +15,9 @@
       
       var conditions = {};
 
+      if(req.session.filter && req.session.filter.conditions)
+        conditions = req.session.filter.conditions;
+
       if (req.user.username != 'admin')
         conditions.approver = req.user.id;
 
@@ -27,6 +30,52 @@
                   res.render('entrances/index', { items: docs, users: users });
                 }
               });
+    });
+
+    app.get('/accesos/filter/:filter', function(req, res){
+      var filter = parseInt(req.params.filter) || 1
+        , conditions;
+
+      switch(filter){
+        case 2:
+          filter      = 'Aprobadas';
+          conditions  = { status: 'Aprobada' };
+        break;
+        case 3:
+          filter      = 'Confirmar';
+          conditions  = { status: 'Confirmar' };
+        break;
+        case 4:
+          filter      = 'Rechazadas';
+          conditions  = { status: 'Rechazada' };
+        break;
+        case 5:
+          filter      = 'Pendientes';
+          conditions  = { status: 'Pendiente' };
+        break;
+        case 6:
+          filter      = 'Tarjetas entregadas';
+          conditions  = { status: 'Aprobada', 'card.number': { $exists: true }, 'card.delivered': true };
+        break;
+        case 7:
+          filter      = 'Tarjetas por entregar';
+          conditions  = { status: 'Aprobada', 'card.number': { $exists: true }, 'card.delivered': { $ne: true } };
+        break;
+        case 8:
+          filter      = 'Aprobadas sin tarjeta';
+          conditions  = { status: 'Aprobada', 'card.number': { $exists: false } };
+        break;
+        default:
+          filter      = 'Todas';
+          conditions  = {};    
+      }
+      
+      req.session.filter = {
+          filter:     filter 
+        , conditions: conditions
+      };
+      res.redirect('/accesos');
+
     });
 
     app.get('/accesos/print', auth, function(req, res){
@@ -93,7 +142,7 @@
                           if(card) {
                             card = String('00000' + card).slice(-5);
                             item.card.number = card;
-                            
+
                             item.save(function(err, saved){
                               console.log(card, item.fullname.surname);
                               console.log(err);

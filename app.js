@@ -41,6 +41,7 @@ function(express, passport, localStrategy, routes){
   app.use(function(req, res, next) {
     res.locals.flash  = req.flash.bind(req);
     res.locals.user   = req.user;
+    res.locals.filter = req.session.filter;
     res.locals.expire = function(date) {
       var today = new Date;
       if( Date.parse(date) < Date.parse(today) )
