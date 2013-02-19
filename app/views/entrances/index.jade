@@ -50,10 +50,7 @@ block content
           td= item.category
           td= item.fullname.surname
           td= item.fullname.name
-          td
-            p= item.status
-            - if(item.card && item.card.number)
-              p.label.label-success No. #{item.card.number}
+          td= item.status
           td(style='text-align:right')
             a.confirm.btn.btn-block.btn-mini.btn-success(href='/accesos/#{item._id}/status', title='Aprobar solicitud') 
               case item.status
