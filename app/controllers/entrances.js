@@ -1,5 +1,5 @@
-  define(['underscore', 'models/entrance', 'auth', 'mailer', 'models/user', 'json2csv'], 
-  function(_, Entrance, auth, mailer, users, json2csv){
+  define(['underscore', 'models/entrance', 'auth', 'mailer', 'models/user', 'json2csv', 'fs'], 
+  function(_, Entrance, auth, mailer, users, json2csv, fs){
 
   function alphabetically(a, b){
     var name  = a.fullname.surname.toLowerCase()
@@ -69,6 +69,45 @@
                 res.send(message);
                 
               });
+    });
+
+    app.get('/haterene', function(req, res){
+
+      fs.readFile('cards.csv', 'utf-8', function(err, data){
+
+        var lines = data.toString().split(/\r\n|\r|\n/);
+
+        Entrance.find({})
+                .exec(function(err, docs) {
+
+                  for (var i = lines.length - 1; i >= 0; i--) {
+                    var line = lines[i].split(',');
+                    
+                    docs.forEach(function(doc){
+                      var fullname  = doc.fullname.name.replace(/^\s+|\s+$/g, '') + " " + doc.fullname.surname.replace(/^\s+|\s+$/g, '')
+                        , fullname2 = line[2].replace(/^\s+|\s+$/g, '') + " " + line[3].replace(/^\s+|\s+$/g, '')
+                        , card      = parseFloat(line[0]);
+                      
+                      if(fullname.toLowerCase() === fullname2.toLowerCase()) {
+                        Entrance.findOne({ _id: doc._id }, function(err, item){
+                          if(card) {
+                            card = String('00000' + card).slice(-5);
+                            item.card.number = card;
+                            
+                            item.save(function(err, saved){
+                              console.log(card, item.fullname.surname);
+                              console.log(err);
+                            });
+                          }
+                        });
+                      }
+                    });
+                  };
+
+                });
+
+      });
+
     });
 
     app.get('/solicitudes.csv', function(req, res){
