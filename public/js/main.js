@@ -1,5 +1,26 @@
 $(function(){
 
+  $('body').delegate('.delivered', 'click', function(e){
+    e.preventDefault();
+
+    var el  = $(this)
+      , _id = el.attr('data-id');
+
+    $.ajax({
+        url: '/accesos/' + _id + '/delivered'
+      , success: function(data) {
+          if(data.card && data.card.delivered === true) {
+            el.addClass('btn-primary');
+            el.html('Entregada');
+          } else {
+            el.removeClass('btn-primary');
+            el.html('No entregada');
+          }
+        }
+    });
+
+  });
+
   if($("#entranceForm")) {
 
     $("#entranceForm input[name=adscription]").change(function(){

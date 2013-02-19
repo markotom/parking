@@ -290,6 +290,23 @@
       });
     });
 
+    app.get('/accesos/:id/delivered', auth, function(req, res){
+      var id = req.params.id;
+      Entrance.findOne({ _id: id }, function(err, doc){
+        if(err){
+          res.send(500);
+        } else {
+          doc.card.delivered = true === doc.card.delivered ? false : true;
+          doc.save(function(err, saved){
+            if(err)
+              res.send(500);
+            else
+              res.send(saved);
+          });
+        }
+      });
+    });
+
     // add or save
     app.post('/accesos', function(req, res){
 

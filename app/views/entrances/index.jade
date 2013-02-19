@@ -45,7 +45,7 @@ block content
               - if (u.id === item.approver)
                 - popover_html += popover('Autoriza', u.username); break;
             a.btn.btn-mini.btn-block(href='javascript:;', data-content="#{popover_html}", data-original-title="Detalles", data-html='true', data-animation='false', data-trigger='hover', rel='popover') Detalles
-
+            a.btn.btn-mini.btn-block.delivered(class=(item.card && item.card.delivered === true ? 'btn-primary' : ''), data-id='#{item.id}', href='#' )= (item.card && item.card.delivered === true ? 'Entregada' : 'No entregada')
           td= item.adscription
           td= item.category
           td= item.fullname.surname
