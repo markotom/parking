@@ -9,7 +9,7 @@ $(function(){
     $.ajax({
         url: '/accesos/' + _id + '/delivered'
       , success: function(data) {
-          if(data.card && data.card.delivered === true) {
+          if(data.card && true === data.card.delivered) {
             el.addClass('btn-primary');
             el.html('Entregada');
           } else {
