@@ -63,7 +63,6 @@ $(function(){
           id_unam: {
               minlength: 5
             , number: true
-            , required: true
           }
         , "fullname[name]": {
               minlength: 2
