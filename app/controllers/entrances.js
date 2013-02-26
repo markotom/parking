@@ -180,6 +180,7 @@
 
                     json.push({
                         "ID UNAM": doc['id_unam'] || ''
+                      , "Tarjeta": doc['card']['number'] || ''
                       , "Tipo": doc['adscription'] || ''
                       , "Apellidos": doc['fullname']['surname'] || ''
                       , "Nombre": doc['fullname']['name'] || ''
@@ -198,7 +199,7 @@
                   };
 
 
-                  json2csv({ data: json , fields: [ 'ID UNAM', 'Tipo', 'Apellidos', 'Nombre', 'Correo', 'Categoría', 'División', 'Colegio', 'Posgrado', 'Placas', 'Modelo', 'Color', 'Año', 'Estado' ]}, function(csv){
+                  json2csv({ data: json , fields: [ 'ID UNAM', 'Tarjeta', 'Tipo', 'Apellidos', 'Nombre', 'Correo', 'Categoría', 'División', 'Colegio', 'Posgrado', 'Placas', 'Modelo', 'Color', 'Año', 'Estado' ]}, function(csv){
                     res.header("Content-Type", "application/vnd.ms-excel");
                     res.send(csv);
                   });
