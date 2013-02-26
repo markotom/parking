@@ -361,8 +361,7 @@
     app.post('/accesos', function(req, res){
 
       var doc = {
-          id_unam:      parseFloat(req.body.id_unam)
-        , fullname: {
+         fullname: {
             name:       req.body.fullname.name
           , surname:    req.body.fullname.surname
         }
@@ -376,6 +375,10 @@
           , year:       parseFloat(req.body.car.year)
         }
       };
+
+      if(req.body.id_unam) {
+        doc.id_unam     = parseFloat(req.body.id_unam);
+      }
 
       if (doc.adscription == 'Administrativo') {
         doc.category    = req.body.category_ad;
