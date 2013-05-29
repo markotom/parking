@@ -48,10 +48,10 @@ function(express, passport, localStrategy, routes){
         return true;
       else
         return false;
-    }('2013-02-08'); // YYYY-MM-DD
+    }('2013-06-01 5:00'); // YYYY-MM-DD
 
     next();
-  })
+  });
 
   // controllers 
   var entrance = requirejs('controllers/entrances')(app);

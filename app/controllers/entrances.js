@@ -473,7 +473,7 @@
 
           var message = "<p>Estimado " + doc.fullname.name + " " + doc.fullname.surname + ",</p>"
                       + "<p>Se ha generado la solicitud con el número de identificación "
-                      + "<b>"+ saved._id + "</b>, sugerimos conservar este registro hasta "
+                      + "<b>"+ saved._id + "</b>, sugerimos conservar este correo hasta "
                       + "terminar el trámite para cualquier aclaración o duda.</p>"
                       + "<p></p> <p></p>";
 
@@ -482,16 +482,14 @@
             case 'Profesor de asignatura definitivo':
             case 'Técnico académico':
             case 'Funcionario':
-              message +="<p>Las nuevas tarjetas se entregarán en la pagaduría únicamente "
-                      + "del 9 al 15 de febrero.</p>";
+              message +="";
             break;
 
             default:
               message +="<p>Para obtener información del proceso de asignación de las tarjetas "
                       + "deberás dirigirte a tu coordinación de licenciatura, a la División de "
                       + "Estudios de Posgrado, al DELEFyL o al Departamento de Personal "
-                      + "Administrativo. Las nuevas tarjetas se entregarán en la pagaduría "
-                      + "únicamente del 9 al 15 de febrero.</p>"
+                      + "Administrativo.</p>"
           }
 
           message    += "<p></p> <p></p>"
