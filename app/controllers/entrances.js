@@ -478,7 +478,7 @@
             res.redirect('/');
           }
 
-          var message = "<p>Estimado " + doc.fullname.name + " " + doc.fullname.surname + ",</p>"
+          var message = "<p>Estimado(a) " + doc.fullname.name + " " + doc.fullname.surname + ",</p>"
                       + "<p>Se ha generado la solicitud con el número de identificación "
                       + "<b>"+ saved._id + "</b>, sugerimos conservar este correo hasta "
                       + "terminar el trámite para cualquier aclaración o duda.</p>"
