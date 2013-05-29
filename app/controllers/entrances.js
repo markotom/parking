@@ -359,21 +359,24 @@
     // add or save
     app.post('/accesos', function(req, res){
 
-      var doc = {
-         fullname: {
-            name:       req.body.fullname.name
-          , surname:    req.body.fullname.surname
-        }
-        , phone:        req.body.phone
-        , email:        req.body.email 
-        , adscription:  req.body.adscription
-        , car: {
-            plates:     req.body.car.plates
-          , model:      req.body.car.model
-          , color:      req.body.car.color
-          , year:       parseFloat(req.body.car.year)
-        }
-      };
+      var date = new Date()
+        , doc  = {
+             fullname: {
+                name:       req.body.fullname.name
+              , surname:    req.body.fullname.surname
+            }
+            , phone:        req.body.phone
+            , email:        req.body.email 
+            , adscription:  req.body.adscription
+            , car: {
+                plates:     req.body.car.plates
+              , model:      req.body.car.model
+              , color:      req.body.car.color
+              , year:       parseFloat(req.body.car.year)
+            }
+          };
+
+      date.setMinutes(date.getMinutes() - date.getTimezoneOffset());
 
       if(req.body.id_unam) {
         doc.id_unam     = parseFloat(req.body.id_unam);
@@ -448,6 +451,8 @@
       }
 
       if(req.body._id) {
+
+        doc.updated_at = date.toString();
         
         Entrance.findByIdAndUpdate(req.body._id, doc, function (err, item) {
           if(err) {
@@ -463,6 +468,8 @@
         });
 
       } else {
+
+        doc.created_at = date.toString();
 
         var entrance = new Entrance(doc);
         entrance.save(function (err, saved) {

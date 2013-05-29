@@ -32,6 +32,8 @@ define(['models/mongo'], function(mongo) {
           , default: false
         }
     }
+    , created_at: Date
+    , updated_at: Date
   });
 
   var Entrance = mongo.model('Entrance', schema); 
