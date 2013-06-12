@@ -5,7 +5,7 @@ define(function() {
     , { id: 2, username: 'academica',     password: 'palindromo11', email: 'sacadfyl@gmail.com' }
     , { id: 3, username: 'profesionales', password: '8nk7tr',     email: 'floresfarfanleticia@gmail.com' }
     , { id: 4, username: 'posgrado',      password: 'eMeOQW',     email: 'eramirez@unam.mx' }
-    , { id: 5, username: 'personal',      password: 'amZkd1',     email: 'gonyuj@hotmail.com' }
+    , { id: 5, username: 'personal',      password: 'amZkd1',     email: 'jochoa195@msn.com' }
     , { id: 6, username: 'delefyl',       password: 'ad3bvg',     email: 'delefyl@yahoo.com.mx' }
     , { id: 7, username: 'suayed',        password: 'LFcyER',     email: 'divisionsuayedfilos@yahoo.com.mx' }
     
