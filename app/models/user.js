@@ -20,6 +20,8 @@ define(function() {
     , { id: 16, username: 'letrasm',      password: '5ytErz',     email: 'noemi.novell@gmail.com' }
     , { id: 17, username: 'teatro',       password: 'RZ85d1',     email: 'colegio.de.teatro.unam@gmail.com' }
     , { id: 18, username: 'pedagogia',    password: '8SqVd1',     email: 'colegiopedagogia@gmail.com' }
+    , { id: 19, username: 'direccion',    password: 'b4imMU',     email: 'sacadyl@gmail.com' }
+    , { id: 20, username: 'secgeneral',    password: 'BExhsk',     email: 'consejotecnico.ffyl@gmail.com' }
   ];
 
   return users;
