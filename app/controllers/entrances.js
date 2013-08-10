@@ -81,7 +81,7 @@
     app.get('/accesos/print', auth, function(req, res){
       var conditions = {
         status: 'Aprobada',
-        'card.delivered': false
+        'card.delivered': { $ne: true }
       };
       Entrance.find(conditions)
               .exec(function(err, docs){
