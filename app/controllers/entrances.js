@@ -79,7 +79,10 @@
     });
 
     app.get('/accesos/print', auth, function(req, res){
-      var conditions = { status: 'Aprobada' };
+      var conditions = {
+        status: 'Aprobada',
+        'card.delivered': false
+      };
       Entrance.find(conditions)
               .exec(function(err, docs){
                 if(err){
