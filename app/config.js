@@ -20,6 +20,7 @@ define(function() {
           path: "/usr/sbin/sendmail"
         }
       , gmail: {
+          service: "Gmail",
           auth: {
               user: "sacadfyl@gmail.com"
             , pass: "palindromo11"
