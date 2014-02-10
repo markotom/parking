@@ -449,7 +449,7 @@
 
       if(req.body._id) {
 
-        doc.updated_at = date.toString();
+        doc.updated_at = date;
         
         Entrance.findByIdAndUpdate(req.body._id, doc, function (err, item) {
           if(err) {
@@ -466,7 +466,7 @@
 
       } else {
 
-        doc.created_at = date.toString();
+        doc.created_at = date;
 
         var entrance = new Entrance(doc);
         entrance.save(function (err, saved) {

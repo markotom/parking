@@ -48,6 +48,7 @@ block content
         th Categoría
         th Apellidos
         th Nombre
+        th Fecha
         th Estado
         th(style='width: 70px')
       each item in items
@@ -78,6 +79,7 @@ block content
           td= item.category
           td= item.fullname.surname
           td= item.fullname.name
+          td= item.created_at
           td
             p= item.status
             - if(item.card && item.card.number)
