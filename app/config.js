@@ -15,7 +15,7 @@ define(function() {
         db   : 'filos_estacionamiento'
       }
     , mailer : {
-        service: "ses"
+        service: "gmail"
       , sendmail: {
           path: "/usr/sbin/sendmail"
         }
