@@ -21,7 +21,7 @@ function(express, passport, localStrategy, routes){
     app.use(express.bodyParser());
     app.use(express.cookieParser());
     app.use(express.methodOverride());
-    app.use(express.session({ secret: 'keyboard cat' }));
+    app.use(express.session({ secret: 'thisismysupersecret' }));
     app.use(express.session({ cookie: { maxAge: 60000 }}));
     app.use(passport.initialize());
     app.use(passport.session());
@@ -48,7 +48,7 @@ function(express, passport, localStrategy, routes){
         return true;
       else
         return false;
-    }('2013-06-01 5:00'); // YYYY-MM-DD
+    }('2014-02-12 00:00'); // YYYY-MM-DD
 
     next();
   });
