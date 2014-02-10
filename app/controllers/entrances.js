@@ -10,6 +10,11 @@
 
   var entrances = function(app){
 
+    // redirecto to google form
+    app.get('/reposicion', function(req, res){
+      res.redirect('https://docs.google.com/forms/d/1Vn7PSsTgrNo2BI4PWVHibgxWTyP_lc-byssLbIPDyE8/viewform');
+    });
+
     // retrieve all entrances
     app.get('/accesos', auth, function(req, res){
       
