@@ -254,9 +254,7 @@
           if(saved.status == 'Aprobada') {
             var message = "<p>Estimado(a) " + saved.fullname.name + " " + saved.fullname.surname + ",</p>"
                         + "<p></p><p></p>"
-                        + "<p>Sus datos han sido registrados y se le asignó una nueva tarjeta de ingreso al estacionamiento. Puede recoger su tarjeta en la Secretaría Académica, de lunes a viernes de 11:00 a 14:00 hrs. y de 17:00 a 19:00 hrs. Para que le sea entregada, es necesario que presente copia o la tarjeta de circulación del automóvil que registró en su solicitud.</p>"
-                        + "<p></p><p></p>"
-                        + "<p>Por el momento podrá seguir utilizando la tarjeta anterior (blanca), y posteriormente le informaremos a partir de que día el ingreso será únicamente con la nueva tarjeta.</p>"
+                        + "<p>Sus datos han sido registrados y se le asignó una nueva tarjeta de ingreso al estacionamiento. En breve le avisaremos cuando puede recoger su tarjeta en la Secretaría Académica. Para que le sea entregada, es necesario que presente copia o la tarjeta de circulación del automóvil que registró en su solicitud.</p>"
                         + "<p></p><p></p>"
                         + "<p>Nota: La tarjeta permanente que se le entregará no tiene costo, pero en caso de extravío, deberá reportarla en pagaduría y si requiere una reposición, el costo de la misma será de $500.00 pesos, monto equivalente sólo al costo de recuperación del plástico.</p>"
                         + "<p></p><p></p>"
